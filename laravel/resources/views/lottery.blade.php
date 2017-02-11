@@ -14,14 +14,16 @@
                     <tr>
                         <th class="mdl-data-table__cell--non-numeric">名前</th>
                         <th class="mdl-data-table__cell--non-numeric">所属</th>
+                        <th class="mdl-data-table__cell--non-numeric">固定</th>
                     </tr>
                     </thead>
                     <tbody>
                     @if(isset($lotteryUsers))
                         @foreach($lotteryUsers as $user)
                             <tr>
-                                <td class="mdl-data-table__cell--non-numeric">田中太郎</td>
-                                <td class="mdl-data-table__cell--non-numeric">総務部</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->group_id }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->fixed ? '○' : '×' }}</td>
                             </tr>
                         @endforeach
                     @else
