@@ -21,31 +21,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="">1</td>
-                        <td class="mdl-data-table__cell--non-numeric">田中太郎</td>
-                        <td class="mdl-data-table__cell--non-numeric">総務部</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
+                    @if(isset($lotteryUsers))
+                        @foreach($lotteryUsers as $user)
+                            <tr>
+                                <td class="">{{ $user->id }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->name }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->group_id }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->fixed ? '○' : '×' }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->default_join ? '○' : '×' }}</td>
+                                <td class="mdl-data-table__cell--non-numeric">{{ $user->default_view ? '○' : '×' }}</td>
 
-                    </tr>
-                    <tr>
-                        <td class="">1</td>
-                        <td class="mdl-data-table__cell--non-numeric">田中太郎</td>
-                        <td class="mdl-data-table__cell--non-numeric">総務部</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                    </tr>
-                    <tr>
-                        <td class="">1</td>
-                        <td class="mdl-data-table__cell--non-numeric">田中太郎</td>
-                        <td class="mdl-data-table__cell--non-numeric">総務部</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                        <td class="mdl-data-table__cell--non-numeric">○</td>
-                    </tr>
+                            </tr>
+                        @endforeach
+                    @else
+                        <td class="mdl-data-table__cell--non-numeric" colspan="6">ユーザーがありません。登録してください。</td>
+                    @endif
                     </tbody>
                 </table>
             </div>

@@ -20,6 +20,7 @@
 
 
             {!! Form::open(['url' => '/setting/user/update', 'files' => false]) !!}
+                {{ csrf_field() }}
             <div class="form-group mdl-textfield mdl-js-textfield">
                 {!! Form::label('name' ,'氏名', ['class' => 'mdl-textfield__label']) !!}
                 {!! Form::text('name', null, ['class' => 'form-control mdl-textfield__input']) !!}

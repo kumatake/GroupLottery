@@ -12,9 +12,6 @@ class LotteryUsersController extends Controller
     private $validateRule = [
         'name' => 'required|max:20',
         'group_id' => 'required',
-        'fixed' => 'required',
-        'default_join' => 'required',
-        'default_view' => 'required'
     ];
 
     public function add()
@@ -40,7 +37,14 @@ class LotteryUsersController extends Controller
         $this->validate($request, $this->validateRule);
 
         // 新規データ１件登録
-        LotteryUser::create($request->all());
+        $user = new LotteryUser();
+        $user->name = $request->name;
+        $user->group_id = $request->group_id;
+        $user->fixed = isset($request->fixed) ? 1 : 0;
+        $user->default_join = isset($request->default_join) ? 1 : 0;
+        $user->default_view = isset($request->default_view) ? 1 : 0;
+
+        $user->save();
 
         \Session::flash('flash_message', 'ユーザー登録が完了しました。');
         return redirect('setting');
