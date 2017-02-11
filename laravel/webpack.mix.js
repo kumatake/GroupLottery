@@ -1,4 +1,10 @@
-const { mix } = require('laravel-mix');
+const {mix} = require('laravel-mix');
+
+var paths = {
+    'jquery': 'bower_components/jquery/',
+    'bootstrap': 'bower_components/bootstrap-sass/assets/',
+    'materiallite': 'bower_components/material-design-lite/',
+};
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +17,8 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js(['resources/assets/js/app.js', paths.jquery + 'dist/jquery.js', paths.materiallite + 'material.js'], 'public/js/app.js')
+    .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts/bootstrap')
+     .sass('resources/assets/sass/app.scss', 'public/css')
+    .combine([paths.materiallite + 'material.css', 'resources/assets/css/templetestyle.css'], 'public/css/base.css')
+;
