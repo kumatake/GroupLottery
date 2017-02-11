@@ -60,7 +60,9 @@
         <div class="alert alert-error">{{ Session::get('flash_message') }}</div>
     @endif
     <main class="mdl-layout__content">
-        @yield('content')
+        <div class="mdl-grid">
+            @yield('content')
+        </div>
     </main>
 </div>
 <script type="javascript" src="{{ URL::asset('js/app.js') }}"></script>

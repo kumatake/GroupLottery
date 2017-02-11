@@ -15,15 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lottery', function () {
-    return view('lottery');
-});
+/*
+ * 抽選関連
+ */
+Route::get('/lottery', 'LotteryController@index');
+Route::get('/result', 'LotteryController@result');
 
+/*
+ * 設定関連
+ */
 Route::get('/setting', 'SettingsController@index');
-
-Route::get('/result', function () {
-    return view('result');
-});
 
 /*
  * 抽選ユーザー設定関連
