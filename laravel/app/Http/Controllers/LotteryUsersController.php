@@ -24,7 +24,7 @@ class LotteryUsersController extends Controller
     {
         $lotteryUser = LotteryUser::find($id);
         if ($lotteryUser) {
-            return view('setting.users.edit', compact($lotteryUser));
+            return view('setting.users.edit', compact('lotteryUser'));
         } else {
             \Session::flash('flash_message', 'ID:' . $id . 'のユーザーは存在しません。');
             return redirect('setting');
@@ -50,8 +50,22 @@ class LotteryUsersController extends Controller
         return redirect('setting');
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        // バリデーションを行う
+        $this->validate($request, $this->validateRule);
+
+        // 新規データ１件登録
+        $user = LotteryUser::find($request->id);
+        $user->name = $request->name;
+        $user->group_id = $request->group_id;
+        $user->fixed = isset($request->fixed) ? 1 : 0;
+        $user->default_join = isset($request->default_join) ? 1 : 0;
+        $user->default_view = isset($request->default_view) ? 1 : 0;
+
+        $user->save();
+
+        \Session::flash('flash_message', 'ユーザーを更新しました。');
         return redirect('setting');
     }
 }

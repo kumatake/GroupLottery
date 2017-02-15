@@ -19,7 +19,7 @@ Route::get('/', function () {
  * 抽選関連
  */
 Route::get('/lottery', 'LotteryController@index');
-Route::get('/result', 'LotteryController@result');
+Route::post('/result', 'LotteryController@result');
 
 /*
  * 設定関連
@@ -32,4 +32,4 @@ Route::get('/setting', 'SettingsController@index');
 Route::get('/setting/user/add', 'LotteryUsersController@add');
 Route::post('/setting/user/create', 'LotteryUsersController@create');
 Route::post('/setting/user/update', 'LotteryUsersController@update');
-Route::get('/setting/edit/{id}', 'LotteryUsersController@edit');
+Route::get('/setting/user/edit/{id}', 'LotteryUsersController@edit');

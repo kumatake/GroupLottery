@@ -9,6 +9,8 @@
                 <div class="mdl-card__title">
                     <span>参加者設定</span>
                 </div>
+                {!! Form::open(['url' => '/result', 'files' => false]) !!}
+                {{ csrf_field() }}
                 <div class="mdl-card__supporting-text">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
@@ -41,10 +43,9 @@
                     </table>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <button type="button"
-                            class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored">抽選
-                    </button>
+                    {!! Form::submit('抽選', ['class' => 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary']) !!}
                 </div>
+                {!! Form::close() !!}
             </div>
         </section>
 
