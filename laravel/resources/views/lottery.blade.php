@@ -3,7 +3,7 @@
 @section('title', 'グループ抽選')
 
 @section('content')
-    <div class="mdl-layout__tab-panel is-active" id="overview">
+    <div class="mdl-layout__tab-panel is-active mdl-cell--12-col" id="overview">
         <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
                 <div class="mdl-card__title">
@@ -41,6 +41,13 @@
                         @endif
                         </tbody>
                     </table>
+                </div>
+                <div class="mdl-card__title">
+                    <span>検索設定</span>
+                </div>
+                <div class="mdl-card__actions">
+                    <span>グループ人数:</span>
+                    {!! Form::select('numberpeople', ['1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6'], '5') !!}
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
                     {!! Form::submit('抽選', ['class' => 'mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary']) !!}

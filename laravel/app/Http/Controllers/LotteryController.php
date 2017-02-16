@@ -38,7 +38,12 @@ class LotteryController extends Controller
         $fixedCount = 2;
 
         // グループ数
-        $group = 3;
+        $group = $request->numberpeople;
+        if ((count($request->join) < $group)) {
+            \Session::flash('flash_message', 'グループあたり人数が合計より多くなっています。');
+            return redirect('lottery');
+        }
+        $group = ceil(count($request->join) / $group );
 
         /** @var Collection $fixedList */
         $fixedList = LotteryUser::where('fixed', true)
